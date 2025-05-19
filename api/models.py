@@ -59,12 +59,17 @@ class Author(models.Model):
 
 class Book(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    title = models.UUIDField(max_length=32)
+    title = models.CharField(max_length=128)
     description = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="books")
     total_copies = models.PositiveIntegerField()
-    available_copies = models.PositiveIntegerField()
+    available_copies = models.PositiveIntegerField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if self.available_copies is None:
+            self.available_copies = self.total_copies
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Book: {self.title} - Available:{self.available_copies}"
