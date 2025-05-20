@@ -55,10 +55,6 @@ Follow the steps below to set up the project locally:
    Create a `.env` file in the root directory and include the following variables (replace with your actual values):
 
    ```env
-   DEBUG=True
-   SECRET_KEY=your-secret-key
-   ALLOWED_HOSTS=localhost,127.0.0.1
-
    DEFAULT_FROM_EMAIL=no-reply@yourdomain.com
    SENDINBLUE_API_KEY=your-sendinblue-api-key
 
