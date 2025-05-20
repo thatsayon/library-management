@@ -1,0 +1,68 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+
+# Media and static files
+/media/
+
+# Coverage reports
+.coverage
+*.cover
+*.hypothesis/
+.nox/
+*.tox/
+*.coverage.*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+*.env
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Celery files
+celerybeat-schedule
+celeryd.pid
+
+# MySQL/MariaDB
+*.err
+*.pid
+
+# Python bytecode files
+*.pyc
+
+# Temporary files
+*.bak
+*.swp
+*.swo
