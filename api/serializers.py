@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Book, Author, Category
+from .models import Book, Author, Category, Borrow
 
 User = get_user_model()
 
@@ -81,3 +81,15 @@ class CategorySerializer(serializers.ModelSerializer):
         category = Category.objects.create(name=data['name'])
         category.save()
         return category
+    
+class BorrowListSerializser(serializers.ModelSerializer):
+    book = serializers.CharField(source='book.title')
+    class Meta:
+        model = Borrow
+        fields = ['id', 'book', 'borrow_date', 'due_date']
+        read_only_fields = ['id']
+
+class PenaltyPointSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'penalty_point']

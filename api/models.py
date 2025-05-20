@@ -74,7 +74,13 @@ class Book(models.Model):
     def __str__(self):
         return f"Book: {self.title} - Available:{self.available_copies}"
 
-# class Borrow(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-#     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='borrow_list')
-#     book = models.ForeignKey()
+class Borrow(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='borrow_list')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='borrow_list')
+    borrow_date = models.DateField()
+    due_date = models.DateField()
+    return_date = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"

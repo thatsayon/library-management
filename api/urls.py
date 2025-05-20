@@ -5,6 +5,9 @@ from .views import (
     BookInfoAPIView,
     AuthorsAPIView,
     CategoryAPIView,
+    BorrowBookAPIView,
+    BookReturnAPIView,
+    GetPenaltiesInfoAPIView,
 )
 
 urlpatterns = [
@@ -16,4 +19,9 @@ urlpatterns = [
 
     path('authors/', AuthorsAPIView.as_view()),
     path('categories/', CategoryAPIView.as_view()),
+
+    path('borrow/', BorrowBookAPIView.as_view()),
+    path('return/', BookReturnAPIView.as_view()),
+
+    path('users/<uuid:id>/penalties/', GetPenaltiesInfoAPIView.as_view()),
 ]
